@@ -4,6 +4,7 @@ FastAPI backend for the Metro Route Intelligence dashboard.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -22,9 +23,13 @@ app = FastAPI(
     version="2.0.0",
 )
 
+# Get CORS origins from environment variable or use default for local development
+cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
+allowed_origins = [origin.strip() for origin in cors_origins.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

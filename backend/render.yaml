@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: metro-backend
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+
+    # Health check configuration
+    healthCheckPath: /
+
+    # Environment variables
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: CORS_ORIGINS
+        value: https://metro-project-one.vercel.app,http://localhost:3000
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PYTHONUNBUFFERED
+        value: 1
+
+    # Persistent disk for ML models and datasets
+    # Note: Render Free tier doesn't support disks, upgrade to Starter+ for this feature
+    # disks:
+    #   - name: data
+    #     mountPath: /opt/render/project/src/data
+    #     sizeGB: 1
+    #   - name: models
+    #     mountPath: /opt/render/project/src/models
+    #     sizeGB: 1
