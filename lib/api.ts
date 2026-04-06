@@ -119,7 +119,9 @@ export async function getStationImportance(): Promise<ImportanceScore[]> {
   return data.stations;
 }
 
-export async function optimizeRoute(request: RouteRequest): Promise<RouteResponse> {
+export async function optimizeRoute(
+  request: RouteRequest,
+): Promise<RouteResponse> {
   const response = await fetch(`${API_BASE_URL}/api/route/optimize`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -130,7 +132,9 @@ export async function optimizeRoute(request: RouteRequest): Promise<RouteRespons
 }
 
 export async function getBottlenecks(limit = 10) {
-  const response = await fetch(`${API_BASE_URL}/api/bottlenecks?limit=${limit}`);
+  const response = await fetch(
+    `${API_BASE_URL}/api/bottlenecks?limit=${limit}`,
+  );
   if (!response.ok) throw new Error("Failed to fetch bottlenecks");
   return response.json();
 }

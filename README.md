@@ -138,9 +138,9 @@ cd backend
 python main.py
 ```
 
-Backend will start at: `http://localhost:8000`
+Backend will start at: `https://metro-project-rk1n.onrender.com`
 
-API documentation: `http://localhost:8000/docs`
+API documentation: `https://metro-project-rk1n.onrender.com/docs`
 
 ### Step 4: Install Frontend Dependencies
 
@@ -309,7 +309,7 @@ GET /api/ml/metrics
 2. Start backend: `python backend/main.py`
 3. Start frontend: `npm run dev`
 4. Test route optimization at `http://localhost:3000`
-5. Review ML metrics at `http://localhost:8000/api/ml/metrics`
+5. Review ML metrics at `https://metro-project-rk1n.onrender.com/api/ml/metrics`
 6. Generate visualizations for IEEE paper
 
 ---

@@ -308,7 +308,7 @@ export default function DataSetupPage() {
       formData.append("file", file);
 
       const response = await fetch(
-        `http://localhost:8000/api/upload/dataset/${datasetKey}`,
+        `https://metro-project-rk1n.onrender.com/api/upload/dataset/${datasetKey}`,
         {
           method: "POST",
           body: formData,
@@ -379,7 +379,7 @@ export default function DataSetupPage() {
 
       try {
         const response = await fetch(
-          `http://localhost:8000/api/upload/gtfs/${fileType}`,
+          `https://metro-project-rk1n.onrender.com/api/upload/gtfs/${fileType}`,
           {
             method: "POST",
             body: formData,
@@ -443,7 +443,7 @@ export default function DataSetupPage() {
       formData.append("file", file);
 
       try {
-        const response = await fetch("http://localhost:8000/api/upload/osm", {
+        const response = await fetch("https://metro-project-rk1n.onrender.com/api/upload/osm", {
           method: "POST",
           body: formData,
         });
@@ -548,7 +548,7 @@ export default function DataSetupPage() {
 
       try {
         const response = await fetch(
-          `http://localhost:8000/api/generate/step${i + 1}`,
+          `https://metro-project-rk1n.onrender.com/api/generate/step${i + 1}`,
           {
             method: "POST",
           },
@@ -605,7 +605,7 @@ export default function DataSetupPage() {
     const allCompleted = steps.every((step) => step.status === "complete");
     if (allCompleted) {
       try {
-        const stationsRes = await fetch("http://localhost:8000/api/stations");
+        const stationsRes = await fetch("https://metro-project-rk1n.onrender.com/api/stations");
         const stations = await stationsRes.json();
 
         setGeneratedData({
