@@ -14,6 +14,13 @@ import StationAutocomplete from "@/components/StationAutocomplete";
 import RouteMap from "@/components/RouteMap";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useAlert } from "@/components/AlertProvider";
 import { RouteResponse, Station, getStations, optimizeRoute } from "@/lib/api";
 
@@ -84,7 +91,7 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100">
       <header className="border-b bg-white shadow-sm">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -98,21 +105,21 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               <Link href="/data-setup">
-                <Button className="bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg transition-all duration-200 hover:from-green-600 hover:to-teal-600 hover:shadow-xl active:scale-95 text-sm sm:text-sm px-3 py-2 font-semibold">
+                <Button className="bg-linear-to-r from-green-500 to-teal-500 text-white shadow-lg transition-all duration-200 hover:from-green-600 hover:to-teal-600 hover:shadow-xl active:scale-95 text-sm sm:text-sm px-3 py-2 font-semibold">
                   <Database className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">Data Setup</span>
                   <span className="sm:hidden">Data</span>
                 </Button>
               </Link>
               <Link href="/bottlenecks">
-                <Button className="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg transition-all duration-200 hover:from-orange-600 hover:to-red-600 hover:shadow-xl active:scale-95 text-sm sm:text-sm px-3 py-2 font-semibold">
+                <Button className="bg-linear-to-r from-orange-500 to-red-500 text-white shadow-lg transition-all duration-200 hover:from-orange-600 hover:to-red-600 hover:shadow-xl active:scale-95 text-sm sm:text-sm px-3 py-2 font-semibold">
                   <AlertTriangle className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">Bottlenecks</span>
                   <span className="sm:hidden">Delays</span>
                 </Button>
               </Link>
               <Link href="/ml-prediction">
-                <Button className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg transition-all duration-200 hover:from-purple-600 hover:to-indigo-700 hover:shadow-xl active:scale-95 text-sm sm:text-sm px-3 py-2 font-semibold">
+                <Button className="bg-linear-to-r from-purple-500 to-indigo-600 text-white shadow-lg transition-all duration-200 hover:from-purple-600 hover:to-indigo-700 hover:shadow-xl active:scale-95 text-sm sm:text-sm px-3 py-2 font-semibold">
                   <TrendingUp className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">ML Prediction</span>
                   <span className="sm:hidden">ML</span>
@@ -150,20 +157,30 @@ export default function Home() {
                   <label className="mb-2 block text-sm font-medium">
                     Algorithm
                   </label>
-                  <select
-                    value={algorithm}
-                    onChange={(event) => setAlgorithm(event.target.value)}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="dijkstra">Dijkstra</option>
-                    <option value="astar">A*</option>
-                    <option value="yen">Yen&apos;s K-Shortest Paths</option>
-                  </select>
+                  <Select value={algorithm} onValueChange={setAlgorithm}>
+                    <SelectTrigger className="w-full h-11">
+                      <SelectValue placeholder="Select algorithm" />
+                    </SelectTrigger>
+
+                    <SelectContent className="p-2">
+                      <SelectItem value="dijkstra" className="py-3 px-3 mb-1">
+                        Dijkstra&apos;s Algorithm
+                      </SelectItem>
+
+                      <SelectItem value="astar" className="py-3 px-3 mb-1">
+                        A* Algorithm
+                      </SelectItem>
+
+                      <SelectItem value="yen" className="py-3 px-3">
+                        Yen&apos;s K-Shortest Paths Algorithm
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <Button
                   onClick={handleOptimize}
                   disabled={loading || !source || !destination}
-                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 py-6 text-lg font-bold text-white shadow-lg transition-all duration-200 hover:from-blue-600 hover:to-cyan-600 hover:shadow-xl active:scale-95"
+                  className="w-full bg-linear-to-r from-blue-500 to-cyan-500 py-6 text-lg font-bold text-white shadow-lg transition-all duration-200 hover:from-blue-600 hover:to-cyan-600 hover:shadow-xl active:scale-95"
                 >
                   {loading ? "Optimizing..." : "Find Optimal Route"}
                 </Button>
@@ -304,7 +321,7 @@ export default function Home() {
               {route.alternative_routes.map((alternative, index) => (
                 <div
                   key={index}
-                  className="rounded-xl border-2 border-gray-200 p-5 hover:border-purple-400 hover:shadow-md transition-all duration-200 bg-gradient-to-br from-white to-purple-50"
+                  className="rounded-xl border-2 border-gray-200 p-5 hover:border-purple-400 hover:shadow-md transition-all duration-200 bg-linear-to-br from-white to-purple-50"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <p className="font-bold text-lg text-purple-700">

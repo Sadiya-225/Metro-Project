@@ -70,12 +70,13 @@ const RouteMap: React.FC<RouteMapProps> = ({
     });
 
     // Handle missing sprite images to prevent console errors
-    map.on('styleimagemissing', (e) => {
+    map.on("styleimagemissing", (e) => {
       const id = e.id;
       if (!map.hasImage(id)) {
         // Create a blank 1x1 transparent image
         const img = new Image(1, 1);
-        img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=';
+        img.src =
+          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=";
         img.onload = () => {
           if (!map.hasImage(id)) {
             map.addImage(id, img as any);
@@ -139,7 +140,7 @@ const RouteMap: React.FC<RouteMapProps> = ({
             </p>
             <p style="font-size: 15px; color: #9ca3af; margin: 4px 0;">Zone: <strong style="color: #4b5563;">${station.zone}</strong></p>
             <p style="font-size: 15px; color: #9ca3af; margin: 4px 0;">Importance: <strong style="color: #4b5563;">${station.importance_score}</strong></p>
-            ${station.is_interchange ? '<p style="font-size: 12px; color: #ef4444; margin: 4px 0; font-weight: 600;">Interchange Station</p>' : ""}
+            ${station.is_interchange ? '<p style="font-size: 15px; color: #ef4444; margin: 4px 0; font-weight: 600;">Interchange Station</p>' : ""}
           </div>
         `);
 
@@ -339,7 +340,7 @@ const RouteMap: React.FC<RouteMapProps> = ({
   }, [destination, route, source, stations]);
 
   return (
-    <div className="h-[520px] w-full overflow-hidden rounded-xl border-2 border-gray-200">
+    <div className="h-130 w-full overflow-hidden rounded-xl border-2 border-gray-200">
       <div ref={mapContainerRef} className="h-full w-full" />
     </div>
   );

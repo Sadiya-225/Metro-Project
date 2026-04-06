@@ -95,8 +95,6 @@ const StationAutocomplete: React.FC<StationAutocompleteProps> = ({
                   <div className="font-medium">{station.station_name}</div>
                   <div className="text-sm text-gray-500">
                     {station.line}
-                    {station.is_interchange ? " • Interchange" : ""}
-                    {station.is_terminal ? " • Terminal" : ""}
                     {station.zone ? ` • ${station.zone}` : ""}
                   </div>
                 </div>

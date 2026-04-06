@@ -111,7 +111,7 @@ export default function BottlenecksPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100">
         <div className="text-center">
           <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-blue-600"></div>
           <p className="mt-4 text-gray-600">Loading Bottleneck Analytics...</p>
@@ -121,20 +121,20 @@ export default function BottlenecksPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100">
       <header className="border-b bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <div>
-            <h1 className="flex items-center text-3xl font-bold text-gray-900">
-              <AlertTriangle className="mr-3 h-8 w-8 text-orange-600" />
+            <h1 className="flex items-center text-2xl sm:text-3xl font-bold text-gray-900">
+              <AlertTriangle className="mr-2 sm:mr-3 h-6 w-6 sm:h-8 sm:w-8 text-orange-600" />
               Bottleneck Analytics
             </h1>
             <p className="mt-1 text-sm text-gray-600">
               Data-driven congestion hotspots and OD inefficiency analysis
             </p>
           </div>
-          <Link href="/">
-            <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg transition-all duration-200 hover:from-blue-600 hover:to-cyan-600 hover:shadow-xl active:scale-95">
+          <Link href="/" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg transition-all duration-200 hover:from-blue-600 hover:to-cyan-600 hover:shadow-xl active:scale-95">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Route Intelligence
             </Button>
@@ -173,6 +173,7 @@ export default function BottlenecksPage() {
         )}
 
         <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Left Column - Top Delayed Stations */}
           <Card className="bg-white p-6 shadow-lg">
             <h2 className="mb-4 flex items-center text-xl font-semibold">
               <AlertTriangle className="mr-2 h-5 w-5 text-red-600" />
@@ -182,7 +183,7 @@ export default function BottlenecksPage() {
               {bottlenecks.slice(0, 10).map((station, index) => (
                 <div
                   key={station.station_name}
-                  className="flex items-center justify-between rounded-lg bg-gray-50 p-3"
+                  className="flex items-center justify-between rounded-lg bg-gray-50 p-3.75"
                 >
                   <div className="flex items-center gap-3">
                     <span className="w-6 text-lg font-bold text-gray-400">
@@ -210,100 +211,110 @@ export default function BottlenecksPage() {
             </div>
           </Card>
 
-          <Card className="bg-white p-6 shadow-lg">
-            <h2 className="mb-4 flex items-center text-xl font-semibold">
-              <TrendingUp className="mr-2 h-5 w-5 text-blue-600" />
-              Line Delay Comparison
-            </h2>
-            <ResponsiveContainer width="100%" height={320}>
-              <BarChart data={analytics?.line_delay_comparison ?? []}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="line" />
-                <YAxis
-                  label={{
-                    value: "Delay (min)",
-                    angle: -90,
-                    position: "insideLeft",
-                  }}
-                />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="avg_delay" fill="#3B82F6" name="Average Delay" />
-              </BarChart>
-            </ResponsiveContainer>
-          </Card>
+          {/* Right Column - Line Delay Comparison & Interchange Risk Ranking */}
+          <div className="space-y-6">
+            <Card className="bg-white p-6 shadow-lg">
+              <h2 className="mb-4 flex items-center text-xl font-semibold">
+                <TrendingUp className="mr-2 h-5 w-5 text-blue-600" />
+                Line Delay Comparison
+              </h2>
+              <ResponsiveContainer width="100%" height={320}>
+                <BarChart data={analytics?.line_delay_comparison ?? []}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="line" />
+                  <YAxis
+                    label={{
+                      value: "Delay (min)",
+                      angle: -90,
+                      position: "insideLeft",
+                    }}
+                  />
+                  <Tooltip />
+                  <Legend />
+                  <Bar
+                    dataKey="avg_delay"
+                    fill="#3B82F6"
+                    name="Average Delay"
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </Card>
 
-          <Card className="bg-white p-6 shadow-lg mt-6">
-            <h2 className="mb-4 flex items-center text-xl font-semibold">
-              <AlertTriangle className="mr-2 h-5 w-5 text-red-600" />
-              Interchange Risk Ranking
-            </h2>
-            <div className="grid gap-4">
-              {bottlenecks
-                .filter((station) => station.is_interchange)
-                .sort((a, b) => b.risk_score - a.risk_score)
-                .slice(0, 5)
-                .map((station, index) => (
-                  <div
-                    key={station.station_name}
-                    className="p-5 rounded-xl border-2 border-gray-200 bg-gradient-to-br from-white to-red-50 hover:shadow-lg hover:border-red-300 transition-all duration-200"
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`flex h-12 w-12 items-center justify-center rounded-full font-bold text-white text-lg shadow-md ${
-                            index === 0
-                              ? "bg-red-600"
-                              : index === 1
-                                ? "bg-orange-600"
-                                : "bg-yellow-600"
-                          }`}
-                        >
-                          {index + 1}
+            <Card className="bg-white p-6 shadow-lg">
+              <h2 className="flex items-center text-xl font-semibold">
+                <AlertTriangle className="mr-2 h-5 w-5 text-red-600" />
+                Interchange Risk Ranking
+              </h2>
+              <div className="grid gap-4">
+                {bottlenecks
+                  .filter((station) => station.is_interchange)
+                  .sort((a, b) => b.risk_score - a.risk_score)
+                  .slice(0, 5)
+                  .map((station, index) => (
+                    <div
+                      key={station.station_name}
+                      className="p-4 rounded-xl border-2 border-gray-200 bg-linear-to-br from-white to-red-50 hover:shadow-lg hover:border-red-300 transition-all duration-200"
+                    >
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`flex h-8 w-8 items-center justify-center rounded-full font-bold text-white text-md shadow-md ${
+                              index === 0
+                                ? "bg-red-600"
+                                : index === 1
+                                  ? "bg-orange-600"
+                                  : "bg-yellow-600"
+                            }`}
+                          >
+                            {index + 1}
+                          </div>
+                          <div>
+                            <p className="font-bold text-md text-gray-900">
+                              {station.station_name}
+                            </p>
+                            <p className="text-sm text-gray-600 mt-0.5">
+                              {station.line}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="font-bold text-lg text-gray-900">
-                            {station.station_name}
+                        <div className="text-right">
+                          <p className="text-2xl font-bold text-red-600">
+                            {station.risk_score.toFixed(2)}
                           </p>
-                          <p className="text-sm text-gray-600 mt-0.5">
-                            {station.line}
+                          <p className="text-xs text-gray-500 font-semibold">
+                            Risk Score
                           </p>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <p className="text-3xl font-bold text-red-600">
-                          {station.risk_score.toFixed(2)}
-                        </p>
-                        <p className="text-xs text-gray-500 font-semibold">Risk Score</p>
+                      <div className="grid grid-cols-2 gap-3 mt-1 pt-3 border-t border-gray-200">
+                        <div className="bg-white p-3 rounded-lg shadow-sm">
+                          <p className="text-xs text-gray-500 font-semibold mb-0.5">
+                            Avg Delay
+                          </p>
+                          <p className="text-lg font-bold text-orange-600 leading-none">
+                            {station.avg_delay.toFixed(2)} min
+                          </p>
+                        </div>
+
+                        <div className="bg-white p-3 rounded-lg shadow-sm">
+                          <p className="text-xs text-gray-500 font-semibold mb-0.5">
+                            Congestion
+                          </p>
+                          <p className="text-lg font-bold text-purple-600 leading-none">
+                            {station.congestion_score.toFixed(1)}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-gray-200">
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
-                        <p className="text-xs text-gray-500 font-semibold mb-1">
-                          Avg Delay
-                        </p>
-                        <p className="text-xl font-bold text-orange-600">
-                          {station.avg_delay.toFixed(2)} min
-                        </p>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
-                        <p className="text-xs text-gray-500 font-semibold mb-1">
-                          Congestion
-                        </p>
-                        <p className="text-xl font-bold text-purple-600">
-                          {station.congestion_score.toFixed(1)}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-            {bottlenecks.filter((s) => s.is_interchange).length === 0 && (
-              <p className="text-center text-gray-500 py-8">
-                No interchange stations found in the data.
-              </p>
-            )}
-          </Card>
+                  ))}
+              </div>
+              {bottlenecks.filter((s) => s.is_interchange).length === 0 && (
+                <p className="text-center text-gray-500 py-8">
+                  No Interchange Stations Found in the Data.
+                </p>
+              )}
+            </Card>
+          </div>
         </div>
 
         <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -417,44 +428,6 @@ export default function BottlenecksPage() {
                 ))}
               </tbody>
             </table>
-          </div>
-        </Card>
-
-        <Card className="mt-6 bg-white p-6 shadow-lg">
-          <h2 className="mb-4 flex items-center text-xl font-semibold">
-            <AlertTriangle className="mr-2 h-5 w-5 text-yellow-600" />
-            Interchange Risk Ranking
-          </h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {(analytics?.interchange_risk ?? []).map((station) => (
-              <div
-                key={station.station_name}
-                className="rounded-lg border-2 border-yellow-400 bg-yellow-50 p-4"
-              >
-                <p className="text-lg font-bold">{station.station_name}</p>
-                <p className="text-sm text-gray-600">{station.line}</p>
-                <div className="mt-3 space-y-1 text-sm">
-                  <p>
-                    Delay:{" "}
-                    <span className="font-semibold text-red-600">
-                      {station.avg_delay.toFixed(2)} min
-                    </span>
-                  </p>
-                  <p>
-                    Congestion:{" "}
-                    <span className="font-semibold text-orange-600">
-                      {station.congestion_score.toFixed(1)}
-                    </span>
-                  </p>
-                  <p>
-                    Risk score:{" "}
-                    <span className="font-semibold text-yellow-700">
-                      {station.risk_score.toFixed(2)}
-                    </span>
-                  </p>
-                </div>
-              </div>
-            ))}
           </div>
         </Card>
       </main>

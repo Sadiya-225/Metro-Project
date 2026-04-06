@@ -39,6 +39,7 @@ metro-project/
 │
 ├── app/                 # Next.js App Router
 │   ├── page.tsx        # Route Intelligence page
+│   ├── data-setup/     # Data upload & preview dashboard
 │   ├── bottlenecks/    # Bottleneck Analytics dashboard
 │   └── ml-prediction/  # ML Prediction interface
 │
@@ -67,10 +68,34 @@ metro-project/
 ### Frontend
 - **Next.js 16** - React framework with App Router
 - **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first styling
-- **MapLibre GL** - Interactive map visualization
+- **Tailwind CSS v4** - Utility-first styling with OKLCH color space
+- **shadcn UI (Radix Nova)** - Modern component library with accessible primitives
+- **MapLibre GL** - Interactive map visualization with custom popups
 - **Recharts** - Data visualization charts
-- **Framer Motion** - Smooth animations
+- **CSV Preview** - Client-side data preview for uploaded files
+
+---
+
+## ✨ Latest Features
+
+### Data Setup Dashboard Enhancements
+- **Individual File Uploads** - Upload each dataset file separately with real-time validation
+- **Schema Display** - View column definitions, types, and descriptions for each dataset
+- **Data Preview** - See top 10 rows of uploaded CSV files instantly
+- **Visual Cues** - Color-coded cards for each dataset type (Station Metadata, Delays, Transfers, OD Pairs)
+- **Generate & Train Actions** - Process uploaded data to generate tables and train ML models
+
+### UI/UX Improvements
+- **shadcn Select Component** - Replaced native dropdowns with accessible Radix Nova select
+- **Taller Buttons** - Improved button heights (h-10 default, h-12 XL) for better touch targets
+- **Responsive Design** - Fully responsive across mobile, tablet, and desktop screens
+- **Enhanced Alert Dialogs** - Beautiful modal dialogs replacing window alerts
+- **MapLibre Error Handling** - Fixed sprite image loading warnings with graceful fallbacks
+
+### Algorithm Selection
+- **Modern UI Components** - Algorithm dropdown now uses shadcn UI select
+- **Better Accessibility** - Keyboard navigation and screen reader support
+- **Visual Consistency** - Matches overall Radix Nova design system
 
 ---
 

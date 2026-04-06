@@ -9,7 +9,7 @@ from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -232,24 +232,239 @@ async def get_ml_metrics():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.post("/api/upload/gtfs/stops")
+async def upload_gtfs_stops(file: UploadFile = File(...)):
+    """Upload stops.txt file"""
+    try:
+        gtfs_dir = PROJECT_DIR / "public" / "gtfs_hmrl"
+        gtfs_dir.mkdir(parents=True, exist_ok=True)
+
+        file_path = gtfs_dir / "stops.txt"
+        content = await file.read()
+
+        # Validate it's a text file with CSV data
+        try:
+            content_str = content.decode('utf-8')
+            if not content_str.strip():
+                raise HTTPException(status_code=400, detail="File is empty")
+        except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="File must be a valid text file")
+
+        # Write file
+        with open(file_path, 'wb') as f:
+            f.write(content)
+
+        return {
+            "status": "success",
+            "message": "stops.txt uploaded successfully",
+            "file_path": str(file_path),
+            "size": len(content),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(exc)}")
+
+
+@app.post("/api/upload/gtfs/routes")
+async def upload_gtfs_routes(file: UploadFile = File(...)):
+    """Upload routes.txt file"""
+    try:
+        gtfs_dir = PROJECT_DIR / "public" / "gtfs_hmrl"
+        gtfs_dir.mkdir(parents=True, exist_ok=True)
+
+        file_path = gtfs_dir / "routes.txt"
+        content = await file.read()
+
+        try:
+            content_str = content.decode('utf-8')
+            if not content_str.strip():
+                raise HTTPException(status_code=400, detail="File is empty")
+        except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="File must be a valid text file")
+
+        with open(file_path, 'wb') as f:
+            f.write(content)
+
+        return {
+            "status": "success",
+            "message": "routes.txt uploaded successfully",
+            "file_path": str(file_path),
+            "size": len(content),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(exc)}")
+
+
+@app.post("/api/upload/gtfs/trips")
+async def upload_gtfs_trips(file: UploadFile = File(...)):
+    """Upload trips.txt file"""
+    try:
+        gtfs_dir = PROJECT_DIR / "public" / "gtfs_hmrl"
+        gtfs_dir.mkdir(parents=True, exist_ok=True)
+
+        file_path = gtfs_dir / "trips.txt"
+        content = await file.read()
+
+        try:
+            content_str = content.decode('utf-8')
+            if not content_str.strip():
+                raise HTTPException(status_code=400, detail="File is empty")
+        except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="File must be a valid text file")
+
+        with open(file_path, 'wb') as f:
+            f.write(content)
+
+        return {
+            "status": "success",
+            "message": "trips.txt uploaded successfully",
+            "file_path": str(file_path),
+            "size": len(content),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(exc)}")
+
+
+@app.post("/api/upload/gtfs/stop_times")
+async def upload_gtfs_stop_times(file: UploadFile = File(...)):
+    """Upload stop_times.txt file"""
+    try:
+        gtfs_dir = PROJECT_DIR / "public" / "gtfs_hmrl"
+        gtfs_dir.mkdir(parents=True, exist_ok=True)
+
+        file_path = gtfs_dir / "stop_times.txt"
+        content = await file.read()
+
+        try:
+            content_str = content.decode('utf-8')
+            if not content_str.strip():
+                raise HTTPException(status_code=400, detail="File is empty")
+        except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="File must be a valid text file")
+
+        with open(file_path, 'wb') as f:
+            f.write(content)
+
+        return {
+            "status": "success",
+            "message": "stop_times.txt uploaded successfully",
+            "file_path": str(file_path),
+            "size": len(content),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(exc)}")
+
+
 @app.post("/api/upload/gtfs")
 async def upload_gtfs(files: List = None):
+    """Legacy endpoint for batch GTFS upload"""
     gtfs_dir = PROJECT_DIR / "public" / "gtfs_hmrl"
     return {
         "status": "success" if gtfs_dir.exists() else "info",
-        "message": "GTFS files already present" if gtfs_dir.exists() else "Use manual upload or existing files",
+        "message": "GTFS files already present" if gtfs_dir.exists() else "Use individual upload endpoints",
         "files": [file.name for file in gtfs_dir.glob("*.txt")] if gtfs_dir.exists() else [],
     }
 
 
 @app.post("/api/upload/osm")
-async def upload_osm(file=None):
-    osm_file = PROJECT_DIR / "public" / "export.geojson"
-    return {
-        "status": "success" if osm_file.exists() else "info",
-        "message": "OSM file already present" if osm_file.exists() else "Use manual upload or existing file",
-        "file": str(osm_file) if osm_file.exists() else None,
-    }
+async def upload_osm(file: UploadFile = File(...)):
+    """Upload export.geojson file"""
+    try:
+        public_dir = PROJECT_DIR / "public"
+        public_dir.mkdir(parents=True, exist_ok=True)
+
+        file_path = public_dir / "export.geojson"
+        content = await file.read()
+
+        # Validate it's valid JSON
+        try:
+            import json
+            content_str = content.decode('utf-8')
+            json_data = json.loads(content_str)
+
+            # Basic GeoJSON validation
+            if 'type' not in json_data or 'features' not in json_data:
+                raise HTTPException(
+                    status_code=400,
+                    detail="Invalid GeoJSON: missing 'type' or 'features'"
+                )
+        except json.JSONDecodeError:
+            raise HTTPException(status_code=400, detail="Invalid JSON format")
+        except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="File must be UTF-8 encoded")
+
+        # Write file
+        with open(file_path, 'wb') as f:
+            f.write(content)
+
+        return {
+            "status": "success",
+            "message": "export.geojson uploaded successfully",
+            "file_path": str(file_path),
+            "size": len(content),
+            "features_count": len(json_data.get('features', [])),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(exc)}")
+
+
+@app.post("/api/upload/dataset/{dataset_key}")
+async def upload_dataset(dataset_key: str, file: UploadFile = File(...)):
+    """Upload individual dataset CSV files"""
+    try:
+        # Map dataset keys to filenames
+        dataset_map = {
+            "station_metadata": "station_metadata.csv",
+            "synthetic_delays": "synthetic_realtime_delays.csv",
+            "transfer_penalties": "transfer_penalty_matrix.csv",
+            "od_benchmarks": "od_pair_benchmarks.csv",
+        }
+
+        if dataset_key not in dataset_map:
+            raise HTTPException(status_code=400, detail=f"Invalid dataset key: {dataset_key}")
+
+        filename = dataset_map[dataset_key]
+        file_path = DATA_DIR / filename
+
+        content = await file.read()
+
+        # Validate it's a valid CSV
+        try:
+            content_str = content.decode('utf-8')
+            if not content_str.strip():
+                raise HTTPException(status_code=400, detail="File is empty")
+
+            # Try to parse as CSV to validate
+            import io
+            pd.read_csv(io.StringIO(content_str))
+        except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="File must be UTF-8 encoded CSV")
+        except pd.errors.ParserError:
+            raise HTTPException(status_code=400, detail="Invalid CSV format")
+
+        # Write file
+        with open(file_path, 'wb') as f:
+            f.write(content)
+
+        return {
+            "status": "success",
+            "message": f"{filename} uploaded successfully",
+            "file_path": str(file_path),
+            "size": len(content),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(exc)}")
 
 
 @app.post("/api/generate/step{step_num}")

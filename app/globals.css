@@ -167,3 +167,30 @@
     @apply font-sans;
   }
 }
+
+/* Force horizontal scroll for table previews */
+.table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.table-scroll-wrapper table {
+  min-width: 600px;
+  width: auto;
+  border-collapse: collapse;
+}
+
+.table-scroll-wrapper th,
+.table-scroll-wrapper td {
+  white-space: nowrap;
+  padding: 8px 12px;
+}
+
+/* Ensure parent containers don't clip overflow */
+.gtfs-preview-container {
+  overflow: visible !important;
+  min-width: 0 !important;
+}

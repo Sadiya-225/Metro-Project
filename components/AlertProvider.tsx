@@ -92,7 +92,7 @@ export const AlertProvider: React.FC<{ children: React.ReactNode }> = ({
           <AlertDialogFooter>
             <AlertDialogAction
               onClick={() => setIsOpen(false)}
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95"
+              className="bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95"
             >
               OK
             </AlertDialogAction>
