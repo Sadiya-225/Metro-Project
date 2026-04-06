@@ -1,0 +1,58 @@
+stop_id,stop_name,stop_lat,stop_lon,zone_id,location_type,parent_station,platform_code,stop_name_clean
+MYP,Miyapur,17.4965452,78.3730262,MYP,1,,,Miyapur
+JNT,JNTU College,17.4987037,78.3888668,JNT,1,,,JNTU College
+KPH,KPHB Colony,17.4937602,78.4018258,KPH,1,,,KPHB Colony
+KUK,Kukatpally,17.4849033,78.4117896,KUK,1,,,Kukatpally
+BLR,Balanagar,17.4767464,78.4221082,BLR,1,,,Balanagar
+MSP,Moosapet,17.4718855,78.4261182,MSP,1,,,Moosapet
+BTN,Bharat Nagar,17.4629092,78.4305364,BTN,1,,,Bharat Nagar
+ERA,Erragadda,17.4570487,78.4335811,ERA,1,,,Erragadda
+ESI,ESI Hospital,17.4486969,78.4376283,ESI,1,,,ESI Hospital
+SRN,S. R. Nagar,17.4431205,78.4407241,SRN,1,,,S. R. Nagar
+AME,Ameerpet,17.4357214,78.4447933,,1,,,Ameerpet
+PUN,Panjagutta,17.4289362,78.450955,PUN,1,,,Panjagutta
+IRM,Erra Manzil,17.4202292,78.4563489,IRM,1,,,Erra Manzil
+KHA,Khairatabad,17.4116323,78.4608678,KHA,1,,,Khairatabad
+LKP,Lakdi-ka-pul,17.4040433,78.4649442,LKP,1,,,Lakdi-ka-pul
+ASM,Assembly,17.3979907,78.4708797,ASM,1,,,Assembly
+NAM,Nampally,17.392222,78.4701612,NAM,1,,,Nampally
+GAB,Gandhi Bhavan,17.3858253,78.4733347,GAB,1,,,Gandhi Bhavan
+OMC,Osmania Medical College,17.3820769,78.4817011,OMC,1,,,Osmania Medical College
+MGB,Mahatma Gandhi Bus Station,17.3797886,78.4861571,,1,,,Mahatma Gandhi Bus Station
+MKL,Malakpet,17.3771888,78.4939356,MKL,1,,,Malakpet
+NEM,New Market,17.3734454,78.5031791,NEM,1,,,New Market
+MSB,Musarambagh,17.3710873,78.5119545,MSB,1,,,Musarambagh
+DSN,Dilsukh Nagar,17.3685493,78.5253873,DSN,1,,,Dilsukh Nagar
+CHP,Chaitanyapuri,17.3681501,78.5381335,CHP,1,,,Chaitanyapuri
+VOM,Victoria Memorial,17.3618565,78.5439622,VOM,1,,,Victoria Memorial
+LBN,L. B. Nagar,17.349846,78.5479412,LBN,1,,,L. B. Nagar
+SUB,Sultan Bazar,17.3844473,78.4840241,SUB,1,,,Sultan Bazar
+NAR,Narayanaguda,17.3943658,78.4899578,NAR,1,,,Narayanaguda
+CDP,Chikkadpally,17.4003634,78.4948964,CDP,1,,,Chikkadpally
+RTC,RTC Cross Roads,17.4070321,78.4968023,RTC,1,,,RTC Cross Roads
+MSH,Musheerabad,17.4178744,78.4995051,MSH,1,,,Musheerabad
+GNH,Gandhi Hospital,17.4255155,78.501956,GNH,1,,,Gandhi Hospital
+SCR,Secunderabad West,17.4338034,78.4995181,SCR,1,,,Secunderabad West
+JBS,JBS Parade Ground,17.4444775,78.497584,JBS,1,,,JBS Parade Ground
+NAG,Nagole,17.3907683,78.5588222,NAG,1,,,Nagole
+UPL,Uppal,17.4000665,78.5601868,UPL,1,,,Uppal
+STD,Stadium,17.4074002,78.5542531,STD,1,,,Stadium
+NGR,NGRI,17.4148264,78.5463345,NGR,1,,,NGRI
+HSG,Habsiguda,17.42018,78.540548,HSG,1,,,Habsiguda
+TAR,Tarnaka,17.4274418,78.5300079,TAR,1,,,Tarnaka
+MET,Mettuguda,17.4355207,78.5195754,MET,1,,,Mettuguda
+SEC_E,Secunderabad East,17.4357184,78.5054623,SEC_E,1,,,Secunderabad East
+PRG,Parade Ground,17.4431943,78.4974687,PRG,1,,,Parade Ground
+PAR,Paradise,17.4434668,78.4862436,PAR,1,,,Paradise
+ROP,Rasoolpura,17.443612,78.4764053,ROP,1,,,Rasoolpura
+PRN,Prakash Nagar,17.4448889,78.4658749,PRN,1,,,Prakash Nagar
+BEG,Begumpet,17.4375661,78.4569341,BEG,1,,,Begumpet
+MUN,Madhura Nagar,17.4369652,78.4390993,MUN,1,,,Madhura Nagar
+YUG,Yusufguda,17.4351132,78.4273216,YUG,1,,,Yusufguda
+JR5,Road No 5 Jubilee Hills,17.4300489,78.4232069,JR5,1,,,Road No 5 Jubilee Hills
+JCP,Jubilee Hills Checkpost,17.4281969,78.4137145,JCP,1,,,Jubilee Hills Checkpost
+PED,Peddamma Gudi,17.4306512,78.4083721,PED,1,,,Peddamma Gudi
+MAD,Madhapur,17.4372637,78.4004257,MAD,1,,,Madhapur
+DGC,Durgam Cheruvu,17.4429466,78.3875721,DGC,1,,,Durgam Cheruvu
+HTC,HITEC City,17.4490055,78.3831376,HTC,1,,,HITEC City
+RDG,Raidurg,17.442,78.3772038,RDG,1,,,Raidurg

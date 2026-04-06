@@ -1,0 +1,13 @@
+from_station,to_station,walking_minutes,crowd_penalty,platform_switch_penalty,escalator_penalty,effective_transfer_cost,from_line,to_line,transfer_type,gtfs_transfer_file_present
+JBS Parade Ground,Parade Ground,1.79,2.24,0.4,0.2,4.63,C2_GREEN,C3_BLUE,walking_link,False
+Parade Ground,JBS Parade Ground,1.79,2.24,0.4,0.2,4.63,C3_BLUE,C2_GREEN,walking_link,False
+Osmania Medical College,Sultan Bazar,4.82,2.4,0.4,0.2,7.82,C1_RED,C2_GREEN,walking_link,False
+Sultan Bazar,Osmania Medical College,4.82,2.4,0.4,0.2,7.82,C2_GREEN,C1_RED,walking_link,False
+Madhura Nagar,S. R. Nagar,7.38,2.26,0.4,0.2,10.24,C3_BLUE,C1_RED,walking_link,False
+S. R. Nagar,Madhura Nagar,7.38,2.26,0.4,0.2,10.24,C1_RED,C3_BLUE,walking_link,False
+Ameerpet,Ameerpet,2.5,5.5,2.0,1.0,11.0,C1_RED,C3_BLUE,in_station_interchange,False
+Ameerpet,Ameerpet,2.5,5.5,2.0,1.0,11.0,C3_BLUE,C1_RED,in_station_interchange,False
+Mahatma Gandhi Bus Station,Mahatma Gandhi Bus Station,2.5,5.5,2.0,1.0,11.0,C1_RED,C2_GREEN,in_station_interchange,False
+Mahatma Gandhi Bus Station,Mahatma Gandhi Bus Station,2.5,5.5,2.0,1.0,11.0,C2_GREEN,C1_RED,in_station_interchange,False
+Secunderabad East,Secunderabad West,8.32,2.08,0.4,0.2,11.0,C3_BLUE,C2_GREEN,walking_link,False
+Secunderabad West,Secunderabad East,8.32,2.08,0.4,0.2,11.0,C2_GREEN,C3_BLUE,walking_link,False
