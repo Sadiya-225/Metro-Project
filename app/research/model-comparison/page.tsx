@@ -9,7 +9,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
-import { ArrowLeft, BarChart3 } from 'lucide-react';
+import { ArrowLeft, BarChart3, CheckCircle2 } from 'lucide-react';
 
 const modelData = [
   { dataset: 'Synthetic', xgb_mae: 0.300, rf_mae: 0.307, lstm_mae: 0.31, transformer_mae: 0.305 },
@@ -211,24 +211,24 @@ export default function ModelComparisonPage() {
           </CardHeader>
           <CardContent>
             <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start">
-                <span className="text-green-600 mr-3 font-bold">✓</span>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Deploy XGBoost as primary delay prediction model</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-green-600 mr-3 font-bold">✓</span>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Use real-world data for training; synthetic-only models fail catastrophically (R²=-0.562)</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-green-600 mr-3 font-bold">✓</span>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Monitor model performance on real data; retrain periodically with fresh operational delays</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-green-600 mr-3 font-bold">✓</span>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Consider LSTM/Transformer for networks with strong temporal patterns</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-green-600 mr-3 font-bold">✓</span>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Maintain Random Forest as ensemble baseline for robustness and interpretability</span>
               </li>
             </ul>

@@ -8,7 +8,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, BarChart3, TrendingUp, Shield, Database, Brain, Zap } from 'lucide-react';
+import { ArrowRight, BarChart3, TrendingUp, Shield, Database, Brain, Zap, LineChart, Activity, CheckCircle } from 'lucide-react';
 
 const researchPhases = [
   {
@@ -247,15 +247,15 @@ export default function ResearchPage() {
         {/* Quick Navigation */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {[
-            { title: 'Model Comparison', href: '/research/model-comparison', icon: '📊' },
-            { title: 'Scalability', href: '/research/scalability', icon: '📈' },
-            { title: 'Statistics', href: '/research/statistics', icon: '📐' },
-            { title: 'Validation', href: '/research/validation', icon: '✓' },
+            { title: 'Model Comparison', href: '/research/model-comparison', Icon: BarChart3 },
+            { title: 'Scalability', href: '/research/scalability', Icon: TrendingUp },
+            { title: 'Statistics', href: '/research/statistics', Icon: Activity },
+            { title: 'Validation', href: '/research/validation', Icon: CheckCircle },
           ].map((item) => (
             <Link key={item.href} href={item.href}>
               <Card className="bg-white border-gray-200 hover:border-blue-500 transition-colors cursor-pointer h-full shadow-lg">
                 <CardContent className="pt-6 text-center">
-                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <item.Icon className="w-10 h-10 mb-3 mx-auto text-blue-600" />
                   <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
                   <div className="flex items-center justify-center text-blue-600 text-sm font-medium">
                     Explore <ArrowRight className="w-4 h-4 ml-2" />

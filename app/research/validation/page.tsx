@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, CheckCircle2, AlertCircle, Database, TrendingDown } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, AlertCircle, Database, TrendingDown, Check, X } from 'lucide-react';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface ModelMetrics {
@@ -396,14 +396,20 @@ export default function ValidationPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <p className="text-sm font-semibold text-green-700 mb-2">✓ Real Data Integration Success</p>
+              <div className="flex items-center gap-2 text-sm font-semibold text-green-700 mb-2">
+                <Check className="w-5 h-5" />
+                <span>Real Data Integration Success</span>
+              </div>
               <p className="text-gray-700 text-sm">
                 Successfully incorporated 1,664 real Indian Railway records into the model pipeline. Models trained on real data achieve R² = {(real?.r2 || 0).toFixed(3)}, validating the dataset quality and model architecture.
               </p>
             </div>
 
             <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <p className="text-sm font-semibold text-red-700 mb-2">✗ Synthetic-to-Real Domain Shift</p>
+              <div className="flex items-center gap-2 text-sm font-semibold text-red-700 mb-2">
+                <X className="w-5 h-5" />
+                <span>Synthetic-to-Real Domain Shift</span>
+              </div>
               <p className="text-gray-700 text-sm">
                 Models trained exclusively on synthetic data fail catastrophically on real delays (R² = {(crossDomain?.r2 || 0).toFixed(3)}). This demonstrates fundamental differences between simulated and operational delay patterns, proving that synthetic data alone is insufficient for production systems.
               </p>

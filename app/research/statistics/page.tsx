@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, BarChart3, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, BarChart3, AlertCircle, CheckCircle2, Check, X } from 'lucide-react';
 import { LineChart, Line, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface StatisticalAnalysis {
@@ -153,9 +153,10 @@ export default function StatisticsPage() {
                   {pValue < 0.001 ? '< 0.001' : pValue.toFixed(4)}
                 </span>
               </p>
-              <p className={`text-xs font-medium ${isSignificant ? 'text-green-700' : 'text-yellow-700'}`}>
-                {isSignificant ? '✓ Significant at α=0.05' : '✗ Not significant at α=0.05'}
-              </p>
+              <div className={`flex items-center gap-1 text-xs font-medium ${isSignificant ? 'text-green-700' : 'text-yellow-700'}`}>
+                {isSignificant ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                <span>{isSignificant ? 'Significant at α=0.05' : 'Not significant at α=0.05'}</span>
+              </div>
             </div>
           </div>
 
@@ -171,9 +172,10 @@ export default function StatisticsPage() {
                   {stats.wilcoxon_test.p_value.toFixed(4)}
                 </span>
               </p>
-              <p className={`text-xs font-medium ${wilcoxonSignificant ? 'text-green-700' : 'text-yellow-700'}`}>
-                {wilcoxonSignificant ? '✓ Significant at α=0.05' : '✗ Not significant at α=0.05'}
-              </p>
+              <div className={`flex items-center gap-1 text-xs font-medium ${wilcoxonSignificant ? 'text-green-700' : 'text-yellow-700'}`}>
+                {wilcoxonSignificant ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                <span>{wilcoxonSignificant ? 'Significant at α=0.05' : 'Not significant at α=0.05'}</span>
+              </div>
             </div>
           </div>
         </div>
