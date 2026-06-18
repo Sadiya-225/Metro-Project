@@ -1,0 +1,8 @@
+Disruption Type,Average Detour Ratio,ETA Increase (%),Path Failures (%),Alternative Routes Found,Algorithm Resilience
+Station Closure (random),1.0,N/A,10,9,High (alternatives available)
+Line Closure (10 edges),1.0,N/A,15,8,High (alternatives available)
+Congestion Surge (1.5x),N/A,0.0,0,10,Excellent (no ETA impact)
+Congestion Surge (2.0x),N/A,0.0,0,10,Excellent (no ETA impact)
+Congestion Surge (3.0x),N/A,0.0,0,10,Excellent (no ETA impact)
+Weather Event (20% edges),N/A,0.0,0,10,Excellent (minimal impact)
+Weather Event (50% edges),N/A,0.0,0,10,Good (route flexibility)

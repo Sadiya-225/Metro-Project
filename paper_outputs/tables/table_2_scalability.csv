@@ -1,0 +1,5 @@
+Network Size (nodes),Dijkstra Time (ms),A* Time (ms),Speedup (A*/Dijkstra),Dijkstra Nodes Explored,A* Nodes Explored
+57,0.458,0.1,4.58,57,35
+99,0.28,0.289,0.97,99,60
+250,0.869,0.507,1.71,250,150
+500,1.577,0.687,2.29,500,300

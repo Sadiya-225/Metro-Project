@@ -1,0 +1,56 @@
+{
+  "features": [
+    "hour",
+    "hour_sin",
+    "hour_cos",
+    "day_of_week",
+    "month",
+    "is_peak",
+    "is_weekday",
+    "importance_score",
+    "is_interchange",
+    "is_terminal",
+    "transfer_load",
+    "platform_occupancy",
+    "congestion_score",
+    "weather_encoded",
+    "reliability_score",
+    "connectivity_score",
+    "route_complexity",
+    "station_code",
+    "train_number",
+    "average_delay_minutes"
+  ],
+  "target_variable": "delay_minutes",
+  "total_features": 19,
+  "feature_types": {
+    "temporal": [
+      "hour",
+      "hour_sin",
+      "hour_cos",
+      "day_of_week",
+      "month",
+      "is_peak",
+      "is_weekday"
+    ],
+    "operational": [
+      "platform_occupancy",
+      "congestion_score",
+      "transfer_load",
+      "weather_encoded"
+    ],
+    "station": [
+      "importance_score",
+      "is_interchange",
+      "is_terminal",
+      "connectivity_score"
+    ],
+    "route": [
+      "route_complexity"
+    ],
+    "identifiers": [
+      "station_code",
+      "train_number"
+    ]
+  }
+}

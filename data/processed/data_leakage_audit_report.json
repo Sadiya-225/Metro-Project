@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-06-18 19:36:25.800544",
+  "assessment": "NEEDS INVESTIGATION",
+  "confidence": "LOW",
+  "recommendation": "Fix leakage sources before including in paper",
+  "safe_indicators": 2,
+  "red_flags": 3,
+  "findings_count": 2,
+  "details": {
+    "safe_indicators": [
+      "Low cardinality features",
+      "Cross-domain gap suggests genuine domain shift, not identity leakage"
+    ],
+    "red_flags": [
+      "Identity column found: station_code",
+      "Identity column found: train_number",
+      "Very high correlation: congestion_score (0.807)"
+    ],
+    "findings": [
+      "Verify scaling is fit on training data only",
+      "Verify feature engineering is done before train/test split"
+    ]
+  }
+}

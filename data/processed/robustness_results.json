@@ -1,0 +1,79 @@
+[
+  {
+    "disruption_type": "Station Closure",
+    "affected_station": 49,
+    "mean_detour_ratio": 1.0,
+    "path_failures": 5,
+    "alternative_routes_found": 5
+  },
+  {
+    "disruption_type": "Station Closure",
+    "affected_station": 35,
+    "mean_detour_ratio": 1.0,
+    "path_failures": 5,
+    "alternative_routes_found": 4
+  },
+  {
+    "disruption_type": "Station Closure",
+    "affected_station": 28,
+    "mean_detour_ratio": 1.0,
+    "path_failures": 6,
+    "alternative_routes_found": 4
+  },
+  {
+    "disruption_type": "Station Closure",
+    "affected_station": 5,
+    "mean_detour_ratio": 1.0,
+    "path_failures": 4,
+    "alternative_routes_found": 5
+  },
+  {
+    "disruption_type": "Station Closure",
+    "affected_station": 21,
+    "mean_detour_ratio": 1.0,
+    "path_failures": 5,
+    "alternative_routes_found": 5
+  },
+  {
+    "disruption_type": "Line Closure",
+    "affected_edges": 10,
+    "mean_detour_ratio": 1.0,
+    "path_failures": 9,
+    "alternative_routes_found": 1
+  },
+  {
+    "disruption_type": "Congestion Surge",
+    "affected_stations": 5,
+    "congestion_factor": 1.5,
+    "mean_eta_increase_percent": 0.0,
+    "max_eta_increase_percent": 0.0
+  },
+  {
+    "disruption_type": "Congestion Surge",
+    "affected_stations": 5,
+    "congestion_factor": 2.0,
+    "mean_eta_increase_percent": 0.0,
+    "max_eta_increase_percent": 0.0
+  },
+  {
+    "disruption_type": "Congestion Surge",
+    "affected_stations": 5,
+    "congestion_factor": 3.0,
+    "mean_eta_increase_percent": 0.0,
+    "max_eta_increase_percent": 0.0
+  },
+  {
+    "disruption_type": "Weather Event",
+    "affected_edges_fraction": 0.2,
+    "delay_factor": 1.5,
+    "mean_delay_increase_percent": 0.0,
+    "max_delay_increase_percent": 0.0
+  },
+  {
+    "disruption_type": "Weather Event",
+    "affected_edges_fraction": 0.5,
+    "delay_factor": 1.5,
+    "mean_delay_increase_percent": 0.0,
+    "max_delay_increase_percent": 0.0
+  }
+]

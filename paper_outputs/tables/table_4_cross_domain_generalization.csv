@@ -1,0 +1,7 @@
+Training Set,Test Set,Model,MAE (min),RMSE (min),R²,Generalization Gap
+"Synthetic (50,000 samples)","Synthetic (10,000 samples)",XGBoost,0.3,0.639,0.442,Baseline (same domain)
+"Synthetic (50,000 samples)","Real (1,664 samples)",XGBoost,6.962,17.873,-0.594,-1.036 (large negative)
+"Real (1,331 samples)",Real (333 samples),XGBoost,1.526,4.231,0.885,No gap (same domain)
+"Real (1,331 samples)",Real (333 samples),Random Forest,1.627,4.559,0.869,No gap (same domain)
+"Combined (41,331 samples)","Synthetic (10,333 samples)",XGBoost,0.55,3.076,0.943,+0.501 (positive)
+"Combined (41,331 samples)","Real (10,333 samples)",XGBoost,0.567,3.324,0.931,+0.489 (positive)

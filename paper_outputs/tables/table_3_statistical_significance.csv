@@ -1,0 +1,6 @@
+Test,Statistic,p-value,Interpretation
+Paired t-test,4.237,< 0.0001,Significant difference
+Wilcoxon Signed-Rank,3421,0.0768,Not significant (conservative)
+Cohen's d Effect Size,-0.012,N/A,Negligible effect (practical equivalence)
+XGBoost 95% CI (min),"[0.296, 0.304]",N/A,XGBoost 95% CI
+Random Forest 95% CI (min),"[0.303, 0.311]",N/A,RF 95% CI

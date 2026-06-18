@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-06-18T19:34:27.631403",
+  "dataset_source": "etrain_delays.csv (Indian Railways Historical Data)",
+  "schema_inference": {
+    "source": "etrain_delays.csv (Indian Railways)",
+    "total_records": 1900,
+    "unique_trains": 90,
+    "unique_stations": 480,
+    "unique_station_names": 480,
+    "columns": {
+      "train_number": {
+        "type": "int64",
+        "nulls": 0,
+        "unique_values": 90
+      },
+      "train_name": {
+        "type": "object",
+        "nulls": 0,
+        "unique_values": 42
+      },
+      "station_code": {
+        "type": "object",
+        "nulls": 0,
+        "unique_values": 480
+      },
+      "station_name": {
+        "type": "object",
+        "nulls": 0,
+        "unique_values": 480
+      },
+      "average_delay_minutes": {
+        "type": "float64",
+        "nulls": 236,
+        "unique_values": "N/A"
+      },
+      "pct_right_time": {
+        "type": "float64",
+        "nulls": 0,
+        "unique_values": 470
+      },
+      "pct_slight_delay": {
+        "type": "float64",
+        "nulls": 0,
+        "unique_values": 433
+      },
+      "pct_significant_delay": {
+        "type": "float64",
+        "nulls": 0,
+        "unique_values": 266
+      },
+      "pct_cancelled_unknown": {
+        "type": "float64",
+        "nulls": 0,
+        "unique_values": 48
+      },
+      "scraped_at": {
+        "type": "object",
+        "nulls": 0,
+        "unique_values": 1900
+      },
+      "source_url": {
+        "type": "object",
+        "nulls": 0,
+        "unique_values": 90
+      }
+    },
+    "delay_stats": {
+      "mean": 40.69951923076923,
+      "median": 24.0,
+      "std": 50.33795443812419,
+      "min": 0.0,
+      "max": 586.0,
+      "q25": 13.0,
+      "q75": 49.0
+    }
+  },
+  "data_quality": {
+    "total_records": 1664,
+    "features_engineered": 19,
+    "missing_values": 0,
+    "duplicates": 0,
+    "trains": 90,
+    "stations": 476
+  },
+  "delay_statistics": {
+    "mean_delay_minutes": 40.69951923076923,
+    "median_delay_minutes": 24.0,
+    "std_delay_minutes": 50.33795443812419,
+    "min_delay_minutes": 0.0,
+    "max_delay_minutes": 586.0,
+    "q25_delay_minutes": 13.0,
+    "q75_delay_minutes": 49.0
+  },
+  "feature_coverage": {
+    "peak_hour_records": 957,
+    "weekday_records": 0,
+    "stations_in_dataset": 476
+  },
+  "cross_domain_notes": {
+    "source_domain": "Indian Railways (multiple routes, all-India data)",
+    "target_domain": "Hyderabad Metro (57 stations, 3 lines)",
+    "domain_shift_factors": [
+      "Different transportation modes (trains vs metro)",
+      "Different network sizes (100+ stations vs 57 stations)",
+      "Different peak hour patterns",
+      "Different weather impact (long-haul trains vs metro)"
+    ],
+    "validation_purpose": "Evaluate model generalization to out-of-distribution transit data",
+    "expected_use": "Train-Synthetic \u2192 Test-Real (cross-domain evaluation)"
+  },
+  "recommendations": [
+    "Use for cross-domain generalization testing",
+    "Compare synthetic-trained models on real railway data",
+    "Evaluate feature importance transfer across domains",
+    "Assess model robustness to different transit systems"
+  ]
+}

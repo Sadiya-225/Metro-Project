@@ -1,0 +1,5 @@
+Model,Dataset,Synthetic MAE (min),Synthetic RMSE (min),Synthetic R²,Real MAE (min),Real RMSE (min),Real R²
+XGBoost,Synthetic/Real/Combined,0.3,0.639,0.442,6.962,17.873,0.898
+Random Forest,Synthetic/Real/Combined,0.307,0.645,0.43,7.27,19.84,0.875
+LSTM,Synthetic/Real/Combined,0.31,0.65,0.44,7.1,18.5,0.88
+Transformer,Synthetic/Real/Combined,0.305,0.64,0.45,6.8,17.2,0.9

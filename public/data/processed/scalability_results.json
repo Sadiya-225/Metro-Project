@@ -1,0 +1,106 @@
+[
+  {
+    "num_nodes": 57,
+    "num_edges": 324,
+    "density": 0.1,
+    "algorithms": {
+      "dijkstra": {
+        "algorithm": "Dijkstra",
+        "mean_time_ms": 0.22941999486647546,
+        "std_time_ms": 0.12621570912631275,
+        "max_time_ms": 0.4755000118166208,
+        "mean_nodes_explored": 4.2,
+        "queries_executed": 10
+      },
+      "astar": {
+        "algorithm": "A*",
+        "mean_time_ms": 0.17658000579103827,
+        "std_time_ms": 0.12307660708408702,
+        "max_time_ms": 0.5010000022593886,
+        "mean_nodes_explored": 4.5,
+        "queries_executed": 10
+      }
+    },
+    "speedup": {
+      "astar_vs_dijkstra": 1.2992337077180633
+    }
+  },
+  {
+    "num_nodes": 99,
+    "num_edges": 497,
+    "density": 0.05,
+    "algorithms": {
+      "dijkstra": {
+        "algorithm": "Dijkstra",
+        "mean_time_ms": 0.3109499957645312,
+        "std_time_ms": 0.23609247245187212,
+        "max_time_ms": 0.90970000019297,
+        "mean_nodes_explored": 5.1,
+        "queries_executed": 10
+      },
+      "astar": {
+        "algorithm": "A*",
+        "mean_time_ms": 0.5344000062905252,
+        "std_time_ms": 0.2810607417961036,
+        "max_time_ms": 1.1614999966695905,
+        "mean_nodes_explored": 6.6,
+        "queries_executed": 10
+      }
+    },
+    "speedup": {
+      "astar_vs_dijkstra": 0.5818664113732681
+    }
+  },
+  {
+    "num_nodes": 250,
+    "num_edges": 3125,
+    "density": 0.05,
+    "algorithms": {
+      "dijkstra": {
+        "algorithm": "Dijkstra",
+        "mean_time_ms": 0.9043200028827414,
+        "std_time_ms": 0.7042890384013902,
+        "max_time_ms": 2.6082000113092363,
+        "mean_nodes_explored": 3.7,
+        "queries_executed": 10
+      },
+      "astar": {
+        "algorithm": "A*",
+        "mean_time_ms": 0.7528399990405887,
+        "std_time_ms": 0.6918884188901588,
+        "max_time_ms": 2.4154999991878867,
+        "mean_nodes_explored": 4.7,
+        "queries_executed": 10
+      }
+    },
+    "speedup": {
+      "astar_vs_dijkstra": 1.2012098225723566
+    }
+  },
+  {
+    "num_nodes": 500,
+    "num_edges": 5000,
+    "density": 0.02,
+    "algorithms": {
+      "dijkstra": {
+        "algorithm": "Dijkstra",
+        "mean_time_ms": 1.7228300013812259,
+        "std_time_ms": 0.773830723490313,
+        "max_time_ms": 3.2427000114694238,
+        "mean_nodes_explored": 4.2,
+        "queries_executed": 10
+      },
+      "astar": {
+        "algorithm": "A*",
+        "mean_time_ms": 0.7035199960228056,
+        "std_time_ms": 0.43655143646760614,
+        "max_time_ms": 1.747799979057163,
+        "mean_nodes_explored": 6.9,
+        "queries_executed": 10
+      }
+    },
+    "speedup": {
+      "astar_vs_dijkstra": 2.4488679245123453
+    }
+  }
+]

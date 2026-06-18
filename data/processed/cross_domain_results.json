@@ -1,0 +1,19 @@
+{
+  "evaluation_type": "synthetic_to_real",
+  "train_dataset": "synthetic",
+  "test_dataset": "real",
+  "models": {
+    "xgboost": {
+      "mae": 38.70242213363795,
+      "rmse": 62.8875229314328,
+      "r2": -0.56170472207666,
+      "samples": 1664
+    },
+    "random_forest": {
+      "mae": 38.693910185289994,
+      "rmse": 62.850701829157195,
+      "r2": -0.5598764785014025,
+      "samples": 1664
+    }
+  }
+}

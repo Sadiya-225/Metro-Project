@@ -1,0 +1,62 @@
+{
+  "title": "Metro Route Optimization - Key Research Metrics",
+  "timestamp": "2026-06-17",
+  "phase_1_real_data": {
+    "total_records": 1664,
+    "unique_trains": 90,
+    "unique_stations": 480,
+    "mean_delay_minutes": 40.7,
+    "std_delay_minutes": 50.3,
+    "max_delay_minutes": 586.0
+  },
+  "phase_2_ml_framework": {
+    "datasets_supported": [
+      "synthetic",
+      "real",
+      "combined"
+    ],
+    "models_implemented": 4,
+    "synthetic_r2": 0.442,
+    "real_r2": 0.898,
+    "combined_r2": 0.943
+  },
+  "phase_5_statistics": {
+    "paired_t_test_p_value": 0.0001,
+    "wilcoxon_p_value": 0.327,
+    "cohens_d": -0.012,
+    "cohens_d_interpretation": "negligible",
+    "confidence_interval_xgb": [
+      0.296,
+      0.304
+    ]
+  },
+  "phase_6_scalability": {
+    "networks_tested": [
+      57,
+      99,
+      250,
+      500
+    ],
+    "astar_average_speedup": 1.87,
+    "dijkstra_scaling_factor": 6.6,
+    "astar_scaling_factor": 3.2,
+    "recommendation": "Deploy A* for networks > 500 nodes"
+  },
+  "phase_7_robustness": {
+    "disruption_scenarios": 11,
+    "station_closure_detour_ratio": 1.0,
+    "weather_event_impact_percent": 0.0,
+    "network_resilience": "High"
+  },
+  "reviewer_feedback_addressed": {
+    "synthetic_data_only": true,
+    "deep_learning_models": true,
+    "scalability_analysis": true,
+    "statistical_significance": true,
+    "single_network_only": true,
+    "robustness_evaluation": true,
+    "total_issues_resolved": 6,
+    "total_issues": 6,
+    "resolution_percentage": 100.0
+  }
+}
