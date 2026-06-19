@@ -29,7 +29,6 @@ class RealDataValidator:
 
     def load_real_delays(self):
         """Load etrain_delays.csv with real operational data."""
-        print("Loading real train delay data from etrain_delays.csv...")
         try:
             self.raw_delays = pd.read_csv(self.data_dir / "etrain_delays.csv")
             print(f"[OK] Loaded {len(self.raw_delays)} records")

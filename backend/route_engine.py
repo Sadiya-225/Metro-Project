@@ -26,7 +26,6 @@ class MetroRouteEngine:
         self.station_delay_profiles = {}
 
     def load_data(self):
-        print("Loading backend route data...")
         self.stations = pd.read_csv(self.data_dir / "station_metadata.csv")
         self.delays = pd.read_csv(self.data_dir / "synthetic_realtime_delays.csv")
         self.od_pairs = pd.read_csv(self.data_dir / "od_pair_benchmarks.csv")

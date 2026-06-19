@@ -109,7 +109,6 @@ export default function Home() {
                 <Button className="bg-linear-to-r from-slate-700 to-slate-600 text-white shadow-lg transition-all duration-200 hover:from-slate-800 hover:to-slate-700 hover:shadow-xl active:scale-95 text-sm sm:text-sm px-3 py-2 font-semibold">
                   <BarChart3 className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">Research</span>
-                  <span className="sm:hidden">📊</span>
                 </Button>
               </Link>
               <Link href="/data-setup">

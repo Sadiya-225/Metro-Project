@@ -23,7 +23,6 @@ class DatasetManager:
 
     def load_synthetic(self) -> pd.DataFrame:
         """Load synthetic Hyderabad metro delay data."""
-        print("Loading synthetic Hyderabad metro data...")
         try:
             df = pd.read_csv(self.data_dir / "synthetic_realtime_delays.csv")
             print(f"  Loaded {len(df)} synthetic records")
@@ -35,7 +34,6 @@ class DatasetManager:
 
     def load_real(self) -> pd.DataFrame:
         """Load real Indian Railway delay data (validated)."""
-        print("Loading real Indian Railway validation data...")
         try:
             df = pd.read_csv(self.processed_dir / "real_delay_validation.csv")
             print(f"  Loaded {len(df)} real records")
@@ -47,7 +45,6 @@ class DatasetManager:
 
     def load_combined(self) -> pd.DataFrame:
         """Load and combine synthetic + real datasets."""
-        print("Loading combined synthetic + real data...")
         synthetic = self.load_synthetic()
         real = self.load_real()
 

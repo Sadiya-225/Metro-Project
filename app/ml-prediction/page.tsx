@@ -195,7 +195,7 @@ export default function MLPredictionPage() {
       <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100">
         <div className="text-center">
           <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-blue-600"></div>
-          <p className="mt-4 text-gray-600">Loading ML models...</p>
+          <p className="mt-4 text-gray-600">Loading ML Models...</p>
         </div>
       </div>
     );
@@ -426,8 +426,16 @@ export default function MLPredictionPage() {
                     />
                     <Tooltip formatter={(value: number) => value.toFixed(4)} />
                     <Legend />
-                    <Bar dataKey="XGBoost" fill="#8B5CF6" radius={[8, 8, 0, 0]} />
-                    <Bar dataKey="RandomForest" fill="#10B981" radius={[8, 8, 0, 0]} />
+                    <Bar
+                      dataKey="XGBoost"
+                      fill="#8B5CF6"
+                      radius={[8, 8, 0, 0]}
+                    />
+                    <Bar
+                      dataKey="RandomForest"
+                      fill="#10B981"
+                      radius={[8, 8, 0, 0]}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
                 <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
@@ -471,8 +479,14 @@ export default function MLPredictionPage() {
                         position: "insideLeft",
                       }}
                     />
-                    <Tooltip formatter={(value: number) => `${value.toFixed(2)}%`} />
-                    <Bar dataKey="R² Score" fill="#3B82F6" radius={[8, 8, 0, 0]} />
+                    <Tooltip
+                      formatter={(value: number) => `${value.toFixed(2)}%`}
+                    />
+                    <Bar
+                      dataKey="R² Score"
+                      fill="#3B82F6"
+                      radius={[8, 8, 0, 0]}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
                 <div className="mt-4 grid grid-cols-2 gap-3 text-xs">

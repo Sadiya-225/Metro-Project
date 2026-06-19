@@ -85,7 +85,7 @@ export default function StatisticsPage() {
       <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-gray-900 text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p>Loading statistical analysis...</p>
+          <p>Loading Statistical Analysis...</p>
         </div>
       </div>
     );
@@ -192,8 +192,8 @@ export default function StatisticsPage() {
                 className={`text-xs font-medium ${isSignificant ? "text-green-700" : "text-yellow-700"}`}
               >
                 {isSignificant
-                  ? "✓ Significant at α=0.05"
-                  : "✗ Not significant at α=0.05"}
+                  ? "Significant at α=0.05"
+                  : "Not significant at α=0.05"}
               </p>
             </div>
           </div>
@@ -222,8 +222,8 @@ export default function StatisticsPage() {
                 className={`text-xs font-medium ${wilcoxonSignificant ? "text-green-700" : "text-yellow-700"}`}
               >
                 {wilcoxonSignificant
-                  ? "✓ Significant at α=0.05"
-                  : "✗ Not significant at α=0.05"}
+                  ? "Significant at α=0.05"
+                  : "Not significant at α=0.05"}
               </p>
             </div>
           </div>

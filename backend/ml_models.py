@@ -38,7 +38,6 @@ class DelayPredictor:
 
     def load_data(self):
         """Load training data."""
-        print("Loading ML training data...")
         self.stations = pd.read_csv(self.data_dir / "station_metadata.csv")
         self.delays = pd.read_csv(self.data_dir / "synthetic_realtime_delays.csv")
         self.station_index = self.stations.set_index("station_id")

@@ -11,6 +11,10 @@ import {
   Loader2,
   ArrowLeft,
   TrendingUp,
+  Building2,
+  Clock,
+  RefreshCw,
+  BarChart3,
 } from "lucide-react";
 import Link from "next/link";
 import { useAlert } from "@/components/AlertProvider";
@@ -118,7 +122,7 @@ export default function DataSetupPage() {
       name: "Station Metadata",
       file: "station_metadata.csv",
       description: "Complete station information with importance scores",
-      icon: "🚉",
+      icon: "station",
       color: "blue",
       uploaded: false,
       previewData: null,
@@ -138,7 +142,7 @@ export default function DataSetupPage() {
       name: "Synthetic Delays",
       file: "synthetic_realtime_delays.csv",
       description: "50,000 realistic delay records with conditions",
-      icon: "⏱️",
+      icon: "clock",
       color: "purple",
       uploaded: false,
       previewData: null,
@@ -156,7 +160,7 @@ export default function DataSetupPage() {
       name: "Transfer Penalties",
       file: "transfer_penalty_matrix.csv",
       description: "Walking times between interchange lines",
-      icon: "🔄",
+      icon: "refresh",
       color: "green",
       uploaded: false,
       previewData: null,
@@ -173,7 +177,7 @@ export default function DataSetupPage() {
       name: "OD Benchmarks",
       file: "od_pair_benchmarks.csv",
       description: "Route efficiency analysis",
-      icon: "📊",
+      icon: "chart",
       color: "orange",
       uploaded: false,
       previewData: null,
@@ -192,7 +196,7 @@ export default function DataSetupPage() {
       name: "Station Metadata",
       file: "station_metadata.csv",
       description: "Complete station information with importance scores",
-      icon: "🚉",
+      icon: "station",
       color: "blue",
       columns: [
         { name: "station_id", type: "string", desc: "Unique identifier" },
@@ -209,7 +213,7 @@ export default function DataSetupPage() {
       name: "Synthetic Delays",
       file: "synthetic_realtime_delays.csv",
       description: "50,000 realistic delay records with conditions",
-      icon: "⏱️",
+      icon: "clock",
       color: "purple",
       columns: [
         { name: "timestamp", type: "datetime", desc: "Occurrence time" },
@@ -224,7 +228,7 @@ export default function DataSetupPage() {
       name: "Transfer Penalties",
       file: "transfer_penalty_matrix.csv",
       description: "Walking times between interchange lines",
-      icon: "🔄",
+      icon: "refresh",
       color: "green",
       columns: [
         { name: "from_line", type: "string", desc: "Origin line" },
@@ -238,7 +242,7 @@ export default function DataSetupPage() {
       name: "OD Benchmarks",
       file: "od_pair_benchmarks.csv",
       description: "Route efficiency analysis",
-      icon: "📊",
+      icon: "chart",
       color: "orange",
       columns: [
         { name: "origin", type: "string", desc: "Start station" },
@@ -628,6 +632,21 @@ export default function DataSetupPage() {
     }
 
     setIsGenerating(false);
+  };
+
+  const getDatasetIcon = (iconName: string) => {
+    switch (iconName) {
+      case "station":
+        return <Building2 className="w-8 h-8 text-blue-600" />;
+      case "clock":
+        return <Clock className="w-8 h-8 text-purple-600" />;
+      case "refresh":
+        return <RefreshCw className="w-8 h-8 text-green-600" />;
+      case "chart":
+        return <BarChart3 className="w-8 h-8 text-orange-600" />;
+      default:
+        return <Database className="w-8 h-8 text-gray-600" />;
+    }
   };
 
   const getStatusIcon = (status: Step["status"]) => {
@@ -1202,7 +1221,7 @@ export default function DataSetupPage() {
                 }`}
               >
                 <div className="flex items-start gap-3">
-                  <span className="text-3xl">{schema.icon}</span>
+                  {getDatasetIcon(schema.icon)}
                   <div className="flex-1">
                     <h3 className="font-bold text-lg text-gray-900">
                       {schema.name}
